@@ -1,0 +1,9 @@
+/build
+*.iml
+.idea/
+
+# Ignore gradle files
+.gradle/
+
+# Local configuration file (sdk path, etc)
+local.properties
