@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         String musicURL = "http://host2.rjavan.stream/media/mp3/mp3-256/Mahbod-Tangna.mp3";
         myMusicay = new MyMusicay();
         myMusicay.setProgressBar(progressBar);
+        myMusicay.setButton(btn);
         myMusicay.execute(musicURL);
     }
 

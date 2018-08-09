@@ -14,6 +14,7 @@
         android:background="@drawable/btn_selector"
         android:onClick="btnClick"
         android:text="@string/start"
+        android:visibility="invisible"
         android:textColor="@color/textColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

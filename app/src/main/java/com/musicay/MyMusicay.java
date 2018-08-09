@@ -4,6 +4,7 @@ import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.AsyncTask;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ProgressBar;
 
 import java.io.IOException;
@@ -13,9 +14,14 @@ public class MyMusicay extends AsyncTask<String , String , String> {
     private MediaPlayer mediaPlayer;
     private ProgressBar progressBar;
 
+    private Button button;
+
     public void setProgressBar(ProgressBar progressBar) {
         this.progressBar = progressBar;
+    }
 
+    public void setButton(Button button) {
+        this.button = button;
     }
 
     @Override
@@ -41,6 +47,7 @@ public class MyMusicay extends AsyncTask<String , String , String> {
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
         progressBar.setVisibility(View.INVISIBLE);
+        button.setVisibility(View.VISIBLE);
     }
 
     public boolean playOrPause() {
