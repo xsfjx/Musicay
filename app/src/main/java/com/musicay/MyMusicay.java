@@ -9,19 +9,49 @@ import android.widget.ProgressBar;
 
 import java.io.IOException;
 
-public class MyMusicay extends AsyncTask<String , String , String> {
+import static com.musicay.MyMusicay.mediaPlayer;
 
-    private MediaPlayer mediaPlayer;
-    private ProgressBar progressBar;
+public class MyMusicay{
 
-    private Button button;
+    static MediaPlayer mediaPlayer;
 
-    public void setProgressBar(ProgressBar progressBar) {
-        this.progressBar = progressBar;
+    public void init(String musicURL , ProgressBar progressBar , Button button){
+        mediaPlayer = new MediaPlayer();
+        mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+
+        AsyncTaskRunner asyncTaskRunner = new AsyncTaskRunner();
+        asyncTaskRunner.setProgressBar(progressBar);
+        asyncTaskRunner.setButton(button);
+        asyncTaskRunner.execute(musicURL);
     }
+
+    public boolean playOrPause() {
+        if (mediaPlayer.isPlaying()) {
+            mediaPlayer.pause();
+            return true;
+        } else {
+            mediaPlayer.start();
+            return false;
+        }
+    }
+
+    public void killPlayer() {
+        mediaPlayer.release();
+    }
+
+}
+
+class AsyncTaskRunner extends AsyncTask<String, String, String> {
+
+    private ProgressBar progressBar;
+    private Button button;
 
     public void setButton(Button button) {
         this.button = button;
+    }
+
+    protected void setProgressBar (ProgressBar progressBar){
+        this.progressBar = progressBar;
     }
 
     @Override
@@ -32,8 +62,6 @@ public class MyMusicay extends AsyncTask<String , String , String> {
 
     @Override
     protected String doInBackground(String... strings) {
-        mediaPlayer = new MediaPlayer();
-        mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
         try {
             mediaPlayer.setDataSource(strings[0]);
             mediaPlayer.prepare();
@@ -50,18 +78,5 @@ public class MyMusicay extends AsyncTask<String , String , String> {
         button.setVisibility(View.VISIBLE);
     }
 
-    public boolean playOrPause() {
-        if (mediaPlayer.isPlaying()) {
-            mediaPlayer.pause();
-            return true;
-        } else {
-            mediaPlayer.start();
-            return false;
-        }
-    }
-
-    public void killPlayer() {
-        mediaPlayer.release();
-    }
 }
 
