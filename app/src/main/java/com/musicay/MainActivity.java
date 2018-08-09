@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
         String musicURL = "http://host2.rjavan.stream/media/mp3/mp3-256/Mahbod-Tangna.mp3";
         myMusicay = new MyMusicay();
-        myMusicay.init(musicURL , progressBar , btn);
+        myMusicay.init(musicURL, progressBar, btn);
     }
 
     @Override

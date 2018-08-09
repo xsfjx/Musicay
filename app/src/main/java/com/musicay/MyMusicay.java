@@ -4,6 +4,8 @@ import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.AsyncTask;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ProgressBar;
 
@@ -11,11 +13,11 @@ import java.io.IOException;
 
 import static com.musicay.MyMusicay.mediaPlayer;
 
-public class MyMusicay{
+public class MyMusicay {
 
     static MediaPlayer mediaPlayer;
 
-    public void init(String musicURL , ProgressBar progressBar , Button button){
+    public void init(String musicURL, ProgressBar progressBar, Button button) {
         mediaPlayer = new MediaPlayer();
         mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
 
@@ -50,7 +52,7 @@ class AsyncTaskRunner extends AsyncTask<String, String, String> {
         this.button = button;
     }
 
-    protected void setProgressBar (ProgressBar progressBar){
+    protected void setProgressBar(ProgressBar progressBar) {
         this.progressBar = progressBar;
     }
 
@@ -76,6 +78,8 @@ class AsyncTaskRunner extends AsyncTask<String, String, String> {
         super.onPostExecute(s);
         progressBar.setVisibility(View.INVISIBLE);
         button.setVisibility(View.VISIBLE);
+        Animation expandIn = AnimationUtils.loadAnimation(MyApplication.context, R.anim.fade_in);
+        button.startAnimation(expandIn);
     }
 
 }
