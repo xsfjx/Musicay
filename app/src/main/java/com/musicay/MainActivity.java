@@ -7,7 +7,10 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import com.github.ybq.android.spinkit.style.CubeGrid;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,8 +24,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         btn = findViewById(R.id.btn);
         textView = findViewById(R.id.textView);
+
+        ProgressBar progressBar = (ProgressBar) findViewById(R.id.spin_kit);
+        CubeGrid cubeGrid = new CubeGrid();
+        progressBar.setIndeterminateDrawable(cubeGrid);
+        progressBar.setVisibility(View.INVISIBLE);
+
         String musicURL = "http://host2.rjavan.stream/media/mp3/mp3-256/Mahbod-Tangna.mp3";
-        myMusicay = new MyMusicay(musicURL);
+        myMusicay = new MyMusicay();
+        myMusicay.setProgressBar(progressBar);
+        myMusicay.execute(musicURL);
     }
 
     @Override
