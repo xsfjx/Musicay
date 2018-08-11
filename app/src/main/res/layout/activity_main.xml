@@ -28,7 +28,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/abcd" />
+        app:srcCompat="@drawable/abcd"
+        android:contentDescription="@string/oxy_love_image" />
 
     <ImageButton
         android:id="@+id/imageBtn"
@@ -41,7 +42,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:srcCompat="@drawable/ic_action_play" />
+        app:srcCompat="@drawable/ic_action_play"
+        android:contentDescription="@string/play_pause_imagebutton" />
 
 
 </android.support.constraint.ConstraintLayout>
