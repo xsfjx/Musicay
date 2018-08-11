@@ -8,7 +8,6 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 
-import com.github.ybq.android.spinkit.style.CubeGrid;
 import com.github.ybq.android.spinkit.style.ThreeBounce;
 
 public class MainActivity extends AppCompatActivity {
@@ -45,4 +44,5 @@ public class MainActivity extends AppCompatActivity {
         else
             imageBtn.setImageResource(R.drawable.ic_action_pause);
     }
+
 }
