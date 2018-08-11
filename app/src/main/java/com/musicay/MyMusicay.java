@@ -87,6 +87,8 @@ class AsyncTaskRunner extends AsyncTask<String, String, String> {
         button.setVisibility(View.VISIBLE);
         imageView.setVisibility(View.VISIBLE);
         Animation expandIn = AnimationUtils.loadAnimation(MyApplication.context, R.anim.fade_in);
+        Animation expandOut = AnimationUtils.loadAnimation(MyApplication.context, R.anim.fade_out);
+        progressBar.startAnimation(expandOut);
         imageView.startAnimation(expandIn);
         button.startAnimation(expandIn);
     }
