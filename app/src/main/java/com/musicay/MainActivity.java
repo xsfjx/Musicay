@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         progressBar.setIndeterminateDrawable(cubeGrid);
         progressBar.setVisibility(View.INVISIBLE);
 
-        String musicURL = "http://host2.rjavan.stream/media/mp3/mp3-256/Mahbod-Tangna.mp3";
+        String musicURL = "http://host2.rjavan.stream/media/mp3/mp3-256/Amorphica-OxyLove-(Ft-Sepehr-Khalse-Pedi-I-Liona).mp3";
         myMusicay = new MyMusicay();
         myMusicay.init(musicURL, progressBar, imageBtn, imageView);
     }
