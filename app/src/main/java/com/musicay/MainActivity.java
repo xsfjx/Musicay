@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 
 import com.github.ybq.android.spinkit.style.CubeGrid;
+import com.github.ybq.android.spinkit.style.ThreeBounce;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,8 +24,8 @@ public class MainActivity extends AppCompatActivity {
         ImageView imageView = findViewById(R.id.imageView);
         imageBtn = findViewById(R.id.imageBtn);
         ProgressBar progressBar = (ProgressBar) findViewById(R.id.spin_kit);
-        CubeGrid cubeGrid = new CubeGrid();
-        progressBar.setIndeterminateDrawable(cubeGrid);
+        ThreeBounce threeBounce = new ThreeBounce();
+        progressBar.setIndeterminateDrawable(threeBounce);
         progressBar.setVisibility(View.INVISIBLE);
 
         String musicURL = "http://host2.rjavan.stream/media/mp3/mp3-256/Amorphica-OxyLove-(Ft-Sepehr-Khalse-Pedi-I-Liona).mp3";
