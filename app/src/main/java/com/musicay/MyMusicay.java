@@ -6,7 +6,8 @@ import android.os.AsyncTask;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 
 import java.io.IOException;
@@ -17,13 +18,14 @@ public class MyMusicay {
 
     static MediaPlayer mediaPlayer;
 
-    public void init(String musicURL, ProgressBar progressBar, Button button) {
+    public void init(String musicURL, ProgressBar progressBar, ImageButton button, ImageView imageView) {
         mediaPlayer = new MediaPlayer();
         mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
 
         AsyncTaskRunner asyncTaskRunner = new AsyncTaskRunner();
         asyncTaskRunner.setProgressBar(progressBar);
         asyncTaskRunner.setButton(button);
+        asyncTaskRunner.setImageView(imageView);
         asyncTaskRunner.execute(musicURL);
     }
 
@@ -46,9 +48,14 @@ public class MyMusicay {
 class AsyncTaskRunner extends AsyncTask<String, String, String> {
 
     private ProgressBar progressBar;
-    private Button button;
+    private ImageButton button;
+    private ImageView imageView;
 
-    public void setButton(Button button) {
+    public void setImageView(ImageView imageView) {
+        this.imageView = imageView;
+    }
+
+    public void setButton(ImageButton button) {
         this.button = button;
     }
 
@@ -78,7 +85,9 @@ class AsyncTaskRunner extends AsyncTask<String, String, String> {
         super.onPostExecute(s);
         progressBar.setVisibility(View.INVISIBLE);
         button.setVisibility(View.VISIBLE);
+        imageView.setVisibility(View.VISIBLE);
         Animation expandIn = AnimationUtils.loadAnimation(MyApplication.context, R.anim.fade_in);
+        imageView.startAnimation(expandIn);
         button.startAnimation(expandIn);
     }
 
