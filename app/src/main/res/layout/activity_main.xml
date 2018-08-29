@@ -13,10 +13,12 @@
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_gravity="center"
+        android:layout_marginTop="8dp"
         app:SpinKit_Color="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -24,7 +26,7 @@
         android:layout_height="0dp"
         android:scaleType="fitStart"
         android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/spin_kit"
+        app:layout_constraintBottom_toTopOf="@+id/imageBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -33,11 +35,10 @@
 
     <ImageButton
         android:id="@+id/imageBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
         android:background="@null"
         android:onClick="playPause"
-        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

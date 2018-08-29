@@ -6,7 +6,6 @@ import android.os.AsyncTask;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.SeekBar;
@@ -23,13 +22,12 @@ public class MyMusicay {
     private SeekBar seekBar;
     private boolean mUserIsSeeking = false;
 
-    public void init(String musicURL, ProgressBar progressBar, ImageButton button, ImageView imageView) {
+    public void init(String musicURL, ProgressBar progressBar, ImageView imageView) {
         mediaPlayer = new MediaPlayer();
         mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
 
         AsyncTaskRunner asyncTaskRunner = new AsyncTaskRunner();
         asyncTaskRunner.setProgressBar(progressBar);
-        asyncTaskRunner.setButton(button);
         asyncTaskRunner.setImageView(imageView);
         asyncTaskRunner.execute(musicURL);
     }
@@ -91,15 +89,10 @@ public class MyMusicay {
 class AsyncTaskRunner extends AsyncTask<String, String, String> {
 
     private ProgressBar progressBar;
-    private ImageButton button;
     private ImageView imageView;
 
     public void setImageView(ImageView imageView) {
         this.imageView = imageView;
-    }
-
-    public void setButton(ImageButton button) {
-        this.button = button;
     }
 
     protected void setProgressBar(ProgressBar progressBar) {
@@ -127,13 +120,11 @@ class AsyncTaskRunner extends AsyncTask<String, String, String> {
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
         progressBar.setVisibility(View.INVISIBLE);
-        button.setVisibility(View.VISIBLE);
         imageView.setVisibility(View.VISIBLE);
         Animation expandIn = AnimationUtils.loadAnimation(MyApplication.context, R.anim.fade_in);
         Animation expandOut = AnimationUtils.loadAnimation(MyApplication.context, R.anim.fade_out);
         progressBar.startAnimation(expandOut);
         imageView.startAnimation(expandIn);
-        button.startAnimation(expandIn);
     }
 
 }

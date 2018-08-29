@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         progressBar.setIndeterminateDrawable(threeBounce);
         progressBar.setVisibility(View.INVISIBLE);
 
-        myMusicay.init(musicURL, progressBar, imageBtn, imageView);
+        myMusicay.init(musicURL, progressBar, imageView);
 
     }
 
