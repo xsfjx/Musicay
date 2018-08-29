@@ -9,14 +9,19 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.SeekBar;
 
 import java.io.IOException;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import static com.musicay.MyMusicay.mediaPlayer;
 
 public class MyMusicay {
 
     static MediaPlayer mediaPlayer;
+    private SeekBar seekBar;
+    private boolean mUserIsSeeking = false;
 
     public void init(String musicURL, ProgressBar progressBar, ImageButton button, ImageView imageView) {
         mediaPlayer = new MediaPlayer();
@@ -36,6 +41,44 @@ public class MyMusicay {
         } else {
             mediaPlayer.start();
             return false;
+        }
+    }
+
+    public void setSeekBar(SeekBar seekBar) {
+        this.seekBar = seekBar;
+    }
+
+    public void initSeekBar() {
+        if (mediaPlayer.isPlaying()) {
+            seekBar.setMax(mediaPlayer.getDuration());
+            new Timer().scheduleAtFixedRate(new TimerTask() {
+                @Override
+                public void run() {
+                    seekBar.setProgress(mediaPlayer.getCurrentPosition());
+                }
+            }, 0, 1);
+
+            seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+                int userSelectedPosition = 0;
+
+                @Override
+                public void onStartTrackingTouch(SeekBar seekBar) {
+                    mUserIsSeeking = true;
+                }
+
+                @Override
+                public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                    if (fromUser) {
+                        userSelectedPosition = progress;
+                    }
+                }
+
+                @Override
+                public void onStopTrackingTouch(SeekBar seekBar) {
+                    mUserIsSeeking = false;
+                    mediaPlayer.seekTo(userSelectedPosition);
+                }
+            });
         }
     }
 
