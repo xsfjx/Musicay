@@ -20,6 +20,7 @@ public class MyMusicay {
 
     static MediaPlayer mediaPlayer;
     private SeekBar seekBar;
+    private Timer myTimer;
     private boolean mUserIsSeeking = false;
 
     public void init(String musicURL, ProgressBar progressBar, ImageView imageView) {
@@ -33,7 +34,7 @@ public class MyMusicay {
     }
 
     public boolean playOrPause() {
-        if (mediaPlayer.isPlaying()) {
+        if (mediaPlayer.isPlaying() && mediaPlayer!=null) {
             mediaPlayer.pause();
             return true;
         } else {
@@ -49,12 +50,16 @@ public class MyMusicay {
     public void initSeekBar() {
         if (mediaPlayer.isPlaying()) {
             seekBar.setMax(mediaPlayer.getDuration());
-            new Timer().scheduleAtFixedRate(new TimerTask() {
+
+            myTimer = new Timer();
+            myTimer.scheduleAtFixedRate(new TimerTask() {
                 @Override
                 public void run() {
                     seekBar.setProgress(mediaPlayer.getCurrentPosition());
+
                 }
             }, 0, 1);
+
 
             seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
                 int userSelectedPosition = 0;
@@ -82,6 +87,10 @@ public class MyMusicay {
 
     public void killPlayer() {
         mediaPlayer.release();
+    }
+
+    public void sikSeek(){
+        myTimer.cancel();
     }
 
 }

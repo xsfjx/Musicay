@@ -47,6 +47,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onStop() {
+        super.onStop();
+        myMusicay.sikSeek();
+    }
+
+    @Override
     protected void onDestroy() {
         myMusicay.killPlayer();
         super.onDestroy();
