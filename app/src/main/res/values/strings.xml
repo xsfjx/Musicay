@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Musicay</string>
+    <string name="enjoy">ENJOY ;)</string>
+    <string name="start">Start</string>
+    <string name="resume">Resume</string>
+    <string name="pause">Pause :|</string>
+    <string name="oxy_love_image">Oxy Love Image</string>
+    <string name="play_pause_imagebutton">Play Pause ImageButton</string>
 </resources>
