@@ -1,4 +1,4 @@
-package com.musicay;
+package com.musicay.main;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +9,8 @@ import android.widget.ProgressBar;
 import android.widget.SeekBar;
 
 import com.github.ybq.android.spinkit.style.ThreeBounce;
+import com.musicay.MyMusicay;
+import com.musicay.R;
 
 public class MainActivity extends AppCompatActivity {
 
