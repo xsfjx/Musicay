@@ -10,6 +10,8 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.SeekBar;
 
+import com.musicay.tools.application.MyApplication;
+
 import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -130,8 +132,8 @@ class AsyncTaskRunner extends AsyncTask<String, String, String> {
         super.onPostExecute(s);
         progressBar.setVisibility(View.INVISIBLE);
         imageView.setVisibility(View.VISIBLE);
-        Animation expandIn = AnimationUtils.loadAnimation(MyApplication.context, R.anim.fade_in);
-        Animation expandOut = AnimationUtils.loadAnimation(MyApplication.context, R.anim.fade_out);
+        Animation expandIn = AnimationUtils.loadAnimation(MyApplication.getContext(), R.anim.fade_in);
+        Animation expandOut = AnimationUtils.loadAnimation(MyApplication.getContext(), R.anim.fade_out);
         progressBar.startAnimation(expandOut);
         imageView.startAnimation(expandIn);
     }
