@@ -41,7 +41,7 @@
         android:layout_height="75dp"
         android:background="@null"
         android:contentDescription="@string/play_pause_imagebutton"
-        android:onClick="playPause"
+        android:onClick="playPauseBtnClicked"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
