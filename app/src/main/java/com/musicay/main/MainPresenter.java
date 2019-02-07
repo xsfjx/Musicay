@@ -25,7 +25,6 @@ class MainPresenter {
     }
 
     void viewIsReady() {
-        listener.onComplete();
         listener.onFinished();
     }
 
@@ -37,21 +36,14 @@ class MainPresenter {
         @Override
         public void onStart(String... strings) {
             view.showProgress();
-            view.setProgressbarVisibility(ProgressBar.VISIBLE);
             view.fillPlayer(strings);
         }
 
         @Override
-        public void onComplete() {
-            view.setProgressbarVisibility(ProgressBar.INVISIBLE);
-            view.setImageViewVisibility(ImageView.VISIBLE);
+        public void onFinished() {
             view.progressbarAnimation(AnimationUtils.loadAnimation(BusApplication.busContext(), R.anim.fade_out));
             view.imageViewAnimation(AnimationUtils.loadAnimation(BusApplication.busContext(), R.anim.fade_in));
             view.showMsg("LOADED !!!");
-        }
-
-        @Override
-        public void onFinished() {
             view.closeProgress();
         }
 

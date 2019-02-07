@@ -13,7 +13,6 @@ import android.widget.SeekBar;
 
 import com.github.ybq.android.spinkit.style.ThreeBounce;
 import com.musicay.R;
-import com.musicay.helper.dialog.DialogHelper;
 import com.musicay.helper.messages.MessageHelper;
 
 import java.io.IOException;
@@ -128,26 +127,6 @@ public class MainActivity extends AppCompatActivity implements IMainView {
         }
     }
 
-    public void showWaitingDialog() {
-        DialogHelper.init(this
-                , "", this.getString(R.string.pleaseWait)
-                , true, false);
-
-        DialogHelper.show();
-    }
-
-    public void showWaitingDialog(String message) {
-        DialogHelper.init(this
-                , "", message
-                , true, false);
-
-        DialogHelper.show();
-    }
-
-    public void dismissWaitingDialog() {
-        DialogHelper.dissmis();
-    }
-
     @Override
     public void playPauseBtnClicked(View view) {
         if (playOrPause())
@@ -177,37 +156,23 @@ public class MainActivity extends AppCompatActivity implements IMainView {
 
     @Override
     public void showProgress() {
-        showWaitingDialog();
+        progressBar.setVisibility(View.VISIBLE);
+        imageView.setVisibility(View.INVISIBLE);
     }
 
     @Override
     public void closeProgress() {
-        dismissWaitingDialog();
-    }
-
-    @Override
-    public void setProgressbarVisibility(int visibility) {
-        if (visibility == ProgressBar.VISIBLE)
-            imageView.setVisibility(View.VISIBLE);
-        else
-            imageView.setVisibility(View.INVISIBLE);
-    }
-
-    @Override
-    public void setImageViewVisibility(int visibility) {
-        if (visibility == ImageView.VISIBLE)
-            imageView.setVisibility(View.VISIBLE);
-        else
-            imageView.setVisibility(View.INVISIBLE);
+        progressBar.setVisibility(View.INVISIBLE);
+        imageView.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void progressbarAnimation(Animation animation) {
-
+        progressBar.startAnimation(animation);
     }
 
     @Override
     public void imageViewAnimation(Animation animation) {
-
+        imageView.startAnimation(animation);
     }
 }

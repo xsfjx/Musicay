@@ -11,10 +11,6 @@ public interface IMainView {
 
     void closeProgress ();
 
-    void setProgressbarVisibility(int visibility);
-
-    void setImageViewVisibility(int visibility);
-
     void progressbarAnimation(Animation animation);
 
     void imageViewAnimation(Animation animation);
