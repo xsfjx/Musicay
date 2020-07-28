@@ -3,7 +3,6 @@ package com.musicay.main;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.animation.Animation;
 import android.widget.ImageButton;
@@ -18,6 +17,8 @@ import com.musicay.helper.messages.MessageHelper;
 import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity implements IMainView {
 
